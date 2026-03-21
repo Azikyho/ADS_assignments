@@ -1,5 +1,8 @@
 ADS week 1
 
+Azamat Askar
+Group IT-2503
+
 Part 1
 
 Task 1
