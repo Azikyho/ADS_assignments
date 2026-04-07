@@ -1,45 +1,26 @@
-ADS week 1
+ADS week 2
 
 Azamat Askar
 Group IT-2503
 
-Part 1
+adding new user
+<img width="637" height="483" alt="image" src="https://github.com/user-attachments/assets/41f12630-3144-4d6e-827a-696830b31601" />
 
-Task 1
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/f13a0190-6bef-4f23-866e-b85609a77f23" />
 
-Task 2
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/bbe54be0-1acf-4ba0-b5c2-d6142c5767bf" />
+withdraw
+<img width="553" height="654" alt="image" src="https://github.com/user-attachments/assets/0af74481-f4f3-4b36-bf93-1d73020a1c8b" />
 
-Task 3
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/c2ef0035-7a0b-448c-bca9-061492b9768f" />
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/0bbc3e84-6c77-4f37-b598-1c2b243e1860" />
 
-Task 4
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/528a81af-2271-4771-a620-e847f6bbd72c" />
+bill
+<img width="520" height="446" alt="image" src="https://github.com/user-attachments/assets/63a5cf4d-8905-4f06-9a74-e9b53fdfd5b1" />
 
-Part 2
+menu
+<img width="359" height="568" alt="image" src="https://github.com/user-attachments/assets/a8b9784b-26af-4e49-a77a-79d71d5be1bb" />
 
-Task 5
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/bb106977-f442-4b9e-b5a7-70df026ccbf2" />
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/3fc47346-1f51-42dc-b56d-6c7e1fcd0277" />
 
-Task 6
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/0b362d19-6ea5-48f2-bef6-367b6ad81dab" />
+last transaction
+<img width="859" height="350" alt="image" src="https://github.com/user-attachments/assets/6c5aff94-1883-4481-87fe-f34681c1b9a6" />
 
-Task 7
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/a282ea70-3180-48b6-be72-6c4bb1efd4ed" />
 
-Part 3
-
-Task 8
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/a3686390-c6d1-436f-b939-1407b50777d5" />
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/9868f16c-5b7e-414e-b154-82c058bd4387" />
-
-Task 9
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/43d3ec18-b930-4890-87b9-59088ae411f0" />
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/7e720103-c2d8-4cab-8af1-c6ddee25a1ab" />
-
-Task 10
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/cb1280d2-ae0f-4bf2-b60b-99bbeef579ec" />
-<img width="3072" height="1920" alt="image" src="https://github.com/user-attachments/assets/6212f71e-43ba-4ebb-9026-5d46ea17cc72" />
+undo
+<img width="672" height="350" alt="image" src="https://github.com/user-attachments/assets/10b106a0-3b0c-4add-ba33-efdef156e78a" />
