@@ -20,14 +20,6 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        BankAccount[] arr = new BankAccount[3];
-        arr[0] = new BankAccount(1, "A", 100000);
-        arr[1] = new BankAccount(2, "B", 200000);
-        arr[2] = new BankAccount(3, "C", 300000);
-
-        for (BankAccount a : arr) {
-            System.out.println(a.username + " " + (int)a.balance);
-        }
 
         while (true) {
             System.out.println("1 – Enter Bank");
@@ -46,7 +38,9 @@ public class Main {
 
     static BankAccount findAccount(String name) {
         for (BankAccount a : accounts) {
-            if (a.username.equals(name)) return a;
+            if (a.username.equals(name)) {
+                return a;
+            }
         }
         return null;
     }
@@ -109,9 +103,13 @@ public class Main {
 
                 BankAccount a = findAccount(name);
                 if (a != null) {
-                    a.balance += amount;
-                    history.push("Deposit " + (int)amount + " to " + name);
-                    System.out.println("New balance: " + (int)a.balance);
+                    if (amount > 0) {
+                        a.balance += amount;
+                        history.push("Deposit " + (int)amount + " to " + name);
+                        System.out.println("New balance: " + (int)a.balance);
+                    } else {
+                        System.out.println("Invalid amount");
+                    }
                 } else {
                     System.out.println("Account not found");
                 }
@@ -124,16 +122,16 @@ public class Main {
                 double amount = sc.nextDouble();
 
                 BankAccount a = findAccount(name);
-                if (a != null) {
-                    if (a.balance >= amount) {
-                        a.balance -= amount;
-                        history.push("Withdraw " + (int)amount + " from " + name);
-                        System.out.println("New balance: " + (int)a.balance);
-                    } else {
-                        System.out.println("Not enough balance");
-                    }
-                } else {
+                if (a == null) {
                     System.out.println("Account not found");
+                } else if (amount <= 0) {
+                    System.out.println("Invalid amount");
+                } else if (a.balance < amount) {
+                    System.out.println("Not enough balance");
+                } else {
+                    a.balance -= amount;
+                    history.push("Withdraw " + (int)amount + " from " + name);
+                    System.out.println("New balance: " + (int)a.balance);
                 }
             }
 
@@ -174,16 +172,16 @@ public class Main {
                 double amount = sc.nextDouble();
 
                 BankAccount a = findAccount(name);
-                if (a != null) {
-                    if (a.balance >= amount) {
-                        a.balance -= amount;
-                        history.push("Withdraw " + (int)amount + " from " + name);
-                        System.out.println("New balance: " + (int)a.balance);
-                    } else {
-                        System.out.println("Not enough balance");
-                    }
-                } else {
+                if (a == null) {
                     System.out.println("Account not found");
+                } else if (amount <= 0) {
+                    System.out.println("Invalid amount");
+                } else if (a.balance < amount) {
+                    System.out.println("Not enough balance");
+                } else {
+                    a.balance -= amount;
+                    history.push("Withdraw " + (int)amount + " from " + name);
+                    System.out.println("New balance: " + (int)a.balance);
                 }
             }
 
