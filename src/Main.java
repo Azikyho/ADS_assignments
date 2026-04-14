@@ -1,25 +1,20 @@
 import java.util.*;
 
-class BankAccount {
-    int accountNumber;
-    String username;
-    double balance;
-
-    BankAccount(int accountNumber, String username, double balance) {
-        this.accountNumber = accountNumber;
-        this.username = username;
-        this.balance = balance;
-    }
-}
-
 public class Main {
     static LinkedList<BankAccount> accounts = new LinkedList<>();
-    static Stack<String> history = new Stack<>();
-    static Queue<String> billQueue = new LinkedList<>();
     static Queue<BankAccount> accountRequests = new LinkedList<>();
+    static Queue<String> billQueue = new LinkedList<>();
+    static Stack<String> history = new Stack<>();
     static Scanner sc = new Scanner(System.in);
 
+    static BankAccount[] accountArray = new BankAccount[100];
+    static int size = 0;
+
     public static void main(String[] args) {
+
+        addAccount("Azeke", 150000);
+        addAccount("Ilyas", 220000);
+        addAccount("Ilya", 100000);
 
         while (true) {
             System.out.println("1 – Enter Bank");
@@ -36,48 +31,42 @@ public class Main {
         }
     }
 
+    static void addAccount(String name, double bal) {
+        BankAccount a = new BankAccount(size + 1, name, bal);
+        accounts.add(a);
+        accountArray[size] = a;
+        size++;
+    }
+
     static BankAccount findAccount(String name) {
         for (BankAccount a : accounts) {
-            if (a.username.equals(name)) {
-                return a;
-            }
+            if (a.username.equals(name)) return a;
         }
         return null;
     }
 
     static void bankMenu() {
         while (true) {
-            System.out.println("1 Add Account");
+            System.out.println("1 Add Account Request");
             System.out.println("2 Display Accounts");
-            System.out.println("3 Search");
-            System.out.println("4 Deposit");
-            System.out.println("5 Withdraw");
-            System.out.println("6 Bill Payment");
-            System.out.println("7 Back");
+            System.out.println("3 Deposit");
+            System.out.println("4 Withdraw");
+            System.out.println("5 Add Bill");
+            System.out.println("6 Back");
 
             int ch = sc.nextInt();
 
             if (ch == 1) {
-                System.out.println("1 Direct Add");
-                System.out.println("2 Request (Queue)");
-                int t = sc.nextInt();
-
                 System.out.print("Enter username: ");
                 String name = sc.next();
                 System.out.print("Enter balance: ");
                 double bal = sc.nextDouble();
 
-                if (t == 1) {
-                    accounts.add(new BankAccount(accounts.size() + 1, name, bal));
-                    System.out.println("Account added successfully");
-                } else {
-                    accountRequests.add(new BankAccount(accounts.size() + 1, name, bal));
-                    System.out.println("Request submitted");
-                }
+                accountRequests.add(new BankAccount(0, name, bal));
+                System.out.println("Request submitted");
             }
 
             else if (ch == 2) {
-                System.out.println("Accounts List:");
                 int i = 1;
                 for (BankAccount a : accounts) {
                     System.out.println(i++ + ". " + a.username + " – Balance: " + (int)a.balance);
@@ -87,9 +76,14 @@ public class Main {
             else if (ch == 3) {
                 System.out.print("Enter username: ");
                 String name = sc.next();
+                System.out.print("Deposit: ");
+                double amount = sc.nextDouble();
+
                 BankAccount a = findAccount(name);
                 if (a != null) {
-                    System.out.println("Found: " + a.username + " " + (int)a.balance);
+                    a.balance += amount;
+                    history.push("Deposit " + (int)amount + " to " + name);
+                    System.out.println("New balance: " + (int)a.balance);
                 } else {
                     System.out.println("Account not found");
                 }
@@ -98,34 +92,12 @@ public class Main {
             else if (ch == 4) {
                 System.out.print("Enter username: ");
                 String name = sc.next();
-                System.out.print("Deposit: ");
-                double amount = sc.nextDouble();
-
-                BankAccount a = findAccount(name);
-                if (a != null) {
-                    if (amount > 0) {
-                        a.balance += amount;
-                        history.push("Deposit " + (int)amount + " to " + name);
-                        System.out.println("New balance: " + (int)a.balance);
-                    } else {
-                        System.out.println("Invalid amount");
-                    }
-                } else {
-                    System.out.println("Account not found");
-                }
-            }
-
-            else if (ch == 5) {
-                System.out.print("Enter username: ");
-                String name = sc.next();
                 System.out.print("Withdraw: ");
                 double amount = sc.nextDouble();
 
                 BankAccount a = findAccount(name);
                 if (a == null) {
                     System.out.println("Account not found");
-                } else if (amount <= 0) {
-                    System.out.println("Invalid amount");
                 } else if (a.balance < amount) {
                     System.out.println("Not enough balance");
                 } else {
@@ -135,14 +107,14 @@ public class Main {
                 }
             }
 
-            else if (ch == 6) {
-                System.out.print("Enter bill name: ");
+            else if (ch == 5) {
+                System.out.print("Enter bill: ");
                 String bill = sc.next();
                 billQueue.add(bill);
                 System.out.println("Added: " + bill);
             }
 
-            else if (ch == 7) return;
+            else if (ch == 6) return;
         }
     }
 
@@ -174,8 +146,6 @@ public class Main {
                 BankAccount a = findAccount(name);
                 if (a == null) {
                     System.out.println("Account not found");
-                } else if (amount <= 0) {
-                    System.out.println("Invalid amount");
                 } else if (a.balance < amount) {
                     System.out.println("Not enough balance");
                 } else {
@@ -191,21 +161,22 @@ public class Main {
 
     static void adminMenu() {
         while (true) {
-            System.out.println("1 Process Account Requests");
+            System.out.println("1 Process Account Request");
             System.out.println("2 View Requests");
             System.out.println("3 View Bill Queue");
             System.out.println("4 Process Bill");
-            System.out.println("5 Last Transaction");
-            System.out.println("6 Undo");
-            System.out.println("7 Back");
+            System.out.println("5 View Array");
+            System.out.println("6 Last Transaction");
+            System.out.println("7 Undo");
+            System.out.println("8 Back");
 
             int ch = sc.nextInt();
 
             if (ch == 1) {
                 if (!accountRequests.isEmpty()) {
                     BankAccount a = accountRequests.poll();
-                    accounts.add(a);
-                    System.out.println("Account added: " + a.username);
+                    addAccount(a.username, a.balance);
+                    System.out.println("Account created");
                 } else {
                     System.out.println("No requests");
                 }
@@ -232,6 +203,12 @@ public class Main {
             }
 
             else if (ch == 5) {
+                for (int i = 0; i < size; i++) {
+                    System.out.println(accountArray[i].username + " " + (int)accountArray[i].balance);
+                }
+            }
+
+            else if (ch == 6) {
                 if (!history.isEmpty()) {
                     System.out.println("Last transaction: " + history.peek());
                 } else {
@@ -239,15 +216,15 @@ public class Main {
                 }
             }
 
-            else if (ch == 6) {
+            else if (ch == 7) {
                 if (!history.isEmpty()) {
-                    System.out.println("Undo → " + history.pop() + " removed");
+                    System.out.println("Undo → " + history.pop());
                 } else {
                     System.out.println("Nothing to undo");
                 }
             }
 
-            else if (ch == 7) return;
+            else if (ch == 8) return;
         }
     }
 }
